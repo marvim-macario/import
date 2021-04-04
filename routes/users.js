@@ -8,7 +8,7 @@ const CodigoController = require('../controllers/CodigoController');
 
 
 router.get('/teste',(req,res) => {res.send({'sucesso':'ok'})})
-router.post('/tabelas', ComissaoController.create);
+router.get('/tabelas/consulta', ComissaoController.read);
 router.post('/inclusao',IncluirPropostaController.Create);
 router.post('/alterar',AlterarController.Update);
 router.post('/codigo',CodigoController.Update);
