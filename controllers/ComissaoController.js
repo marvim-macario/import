@@ -3,22 +3,13 @@ const Sequelize = require('sequelize');
 
 const ComissaoController ={
     read: async (req, res) =>{       
-      const { proposta } = req.query;
+        const { proposta } = req.query;
+        const consulta = await proposta_fisico.findOne({
+            where:{proposta}})
+        if(consulta)
+            return res.json({'encontrada':true,})
 
-        
-
-        
-
-           const consulta = await proposta_fisico.findOne({
-                where: {
-                    proposta:proposta
-                }
-           })
-
-           if(consulta)
-                return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta já existe no banco de dados'});
-
-
+        return res.json({'encontrada':false})
             // const inclusao =  await proposta_fisico.create({
 
             //     proposta:proposta,
