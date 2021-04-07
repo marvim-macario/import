@@ -1,4 +1,5 @@
 const { proposta_comissao } = require('../models');
+const moment = require('moment');
 
 const AlterarController ={
     
@@ -22,13 +23,10 @@ const AlterarController ={
             quaternario
 
         }}=req.body;
-        const now= new Date;
-        const data_alteracao = `${now.getDay()}/${now.getMonth()}/${now.getFullYear ()}`;
+       
+        const data_alteracao = moment().format('DD/MM/YYYY');
 
-        // taxa = `${taxa}`
-        // if(taxa[0] != '0' && taxa[1] != '.' && taxa[2] != ' 0 ')
-        //     return res.json({'proposta':proposta, 'ok':false, 'message':'formato da cedula taxa incorreto ex:0.0123'});
-
+    
         try {
 
             const consulta = await proposta_comissao.findOne({

@@ -5,8 +5,8 @@ const CodigoController = {
     Update: async (req, res) =>{
         const{ responsavel } = req.query;
         const { element:{ proposta, id_calculo } } = req.body;
-        const now= new Date;
-        const data_alteracao = `${now.getDay()}/${now.getMonth()}/${now.getFullYear ()}`;
+    
+        const data_alteracao = moment().format('DD/MM/YYYY');
 
         try {
 

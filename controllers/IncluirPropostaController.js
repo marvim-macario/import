@@ -1,5 +1,5 @@
 const { proposta_comissao } = require('../models');
-
+const moment = require('moment');
 const IncluirPropostaController = {
     
     Create: async (req,res) =>{
@@ -51,15 +51,9 @@ const IncluirPropostaController = {
         }} =req.body;
 
    
-        const now= new Date;
-        const data_alteracao = `${now.getDay()}/${now.getMonth()}/${now.getFullYear ()}`;
-        taxa = `${taxa}`
-        console.log(taxa)
-        if(taxa != null && taxa != 'undefined'){ 
-            taxa = `${taxa}`
-            if(taxa[0] != '0' && taxa[1] != '.' && taxa[2] != ' 0 ')
-            return res.json({'proposta':proposta, 'ok':false, 'message':'formato da cedula taxa incorreto ex:0.0123'});
-        }
+        const data_alteracao = moment().format('DD/MM/YYYY');
+
+
         try {
 
             const consulta = await proposta_comissao.findOne({
@@ -151,4 +145,4 @@ const IncluirPropostaController = {
     }
 }
 
-module.exports = IncluirPropostaController
+module.exports = IncluirPropostaController;

@@ -1,5 +1,6 @@
 const { proposta_fisico } =require("../models");
 const Sequelize = require('sequelize');
+const moment = require('moment');
 
 const ComissaoController ={
     create: async (req, res) =>{
@@ -12,17 +13,7 @@ const ComissaoController ={
             empresa,correntista,taxa,pontos_campanha,banco,taxa2
         } } = req.body;
 
-        // const now= new Date;
-        // const data_alteracao = `${now.getDay()}/${now.getMonth()}/${now.getFullYear ()}`;
-
-        // taxa = `${taxa}`
-        // if(taxa[0] != '0' && taxa[1] != '.' && taxa[2] != ' 0 ')
-        //     return res.json({'proposta':proposta, 'ok':false, 'message':'formato da cedula taxa incorreto ex:0.0123'});
-
-        // taxa2 = `${taxa2}`
-        // if(taxa2[0] != '0' && taxa2[1] != '.' && taxa2[2] != ' 0 ')
-        //     return res.json({'proposta':proposta, 'ok':false, 'message':'formato da cedula taxa2 incorreto ex:0.0123'});
-
+        
         try {
 
             const consulta = await proposta_fisico.findOne({
@@ -32,10 +23,9 @@ const ComissaoController ={
             })
 
             if(consulta)
-
                 return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta já existe no banco de dados'});
 
-
+            
             const inclusao =  await proposta_fisico.create({
 
                 proposta:proposta,
@@ -76,7 +66,7 @@ const ComissaoController ={
 
         } catch (error) {
             console.log(error);
-            res.send({"inclusa":false,"message":"erro interno do servidor"})
+            res.send({'proposta':proposta,'inclusa':false,"message":"erro interno do servidor"})
         }
     }
 }
