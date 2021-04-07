@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression())
 
 app.use(cors({
-    origin:["http://www.grupoaquimaisvalor.com.br","http://127.0.0.1:5500"]
+    origin:["http://www.grupoaquimaisvalor.com.br"]
 }));
 app.options(" *",cors());
 app.use('/', usersRouter);
