@@ -1,9 +1,10 @@
-const config = {
-  host: '18.229.217.146',
-  username: 'grupogmvb',
-  password: 'bruno0422LA',
-  database: 'grupogmvb',
+config = {
+        
+  host: "database.grupogmvb.com",
+  username: "base_dev",
+  password: "GMVB@2021",
+  database: "base_dev",
   dialect: 'mysql'
-  }
+}
   
   module.exports = config;
