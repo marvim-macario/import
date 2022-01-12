@@ -7,7 +7,7 @@ const AlterarController ={
 
         const{ responsavel } = req.query;
         const{element:{
-            proposta,
+            id_proposta,
             status_pagamento,
             calculo,
             movimentacao,
@@ -31,18 +31,18 @@ const AlterarController ={
 
             const consulta = await proposta_comissao.findOne({
                 where: {
-                    proposta:proposta
+                    id_proposta:id_proposta
                 }
             })
 
             if(!consulta)
-                return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta não encontrada no banco de dados'});
+                return res.json({'id_proposta':id_proposta,'inclusa':false, 'message':'proposta não encontrada no banco de dados'});
             
             if(consulta.status_pagamento === 'PAGO' && cosulta.valor_liberado > 0)
-                return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta com status "PAGO" não pode ser alterada'});
+                return res.json({'id_proposta':id_proposta,'inclusa':false, 'message':'proposta com status "PAGO" não pode ser alterada'});
             
             if(consulta.status_pagamento === 'EM PROCESSO DE PAGTO' && consulta.valor_liberado > 0)
-                return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta com status "EM PROCESSO DE PAGTO" não pode ser alterada'});
+                return res.json({'id_proposta':id_proposta,'inclusa':false, 'message':'proposta com status "EM PROCESSO DE PAGTO" não pode ser alterada'});
 
             if(status_pagamento)consulta.status_pagamento = status_pagamento;
             if(calculo)consulta.calculo = calculo;
@@ -65,7 +65,7 @@ const AlterarController ={
         } catch (error) {
 
             console.log(error);
-            res.send({'proposta':proposta,'inclusa':false,"message":"erro interno do servidor"})
+            res.send({'id_proposta':id_proposta,'inclusa':false,"message":"erro interno do servidor"})
         }
     }
 }
