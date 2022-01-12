@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression())
 
 app.use(cors({
-    origin:["http://www.grupoaquimaisvalor.com.br"]
+    origin:["http://www.grupoaquimaisvalor.com.br","https://www.portalmaisvalor.com","http://www.portalmaisvalor.com"]
 }));
 app.options(" *",cors());
 app.use('/', usersRouter);

@@ -4,6 +4,7 @@ const IncluirPropostaController = {
     
     Create: async (req,res) =>{
         const{ responsavel } = req.query;
+        
         var {element:{
             proposta,parceiro,
             cnpj,supervisor,
