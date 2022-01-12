@@ -22,7 +22,8 @@ const AlterarController ={
             parceiro,
             supervisor,
             gerente,
-            quaternario
+            quaternario,
+            data_quat
 
         }}=req.body;
        
@@ -59,6 +60,7 @@ const AlterarController ={
             if(supervisor)consulta.supervisor = supervisor;
             if(gerente)consulta.gerente = gerente;
             if(quaternario)consulta.quaternario = quaternario;
+            if(data_quat)consulta.data_quat = data_quat;
             consulta.data_alteracao = data_alteracao;
             consulta.responsavel = responsavel;
 
