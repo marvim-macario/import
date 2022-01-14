@@ -41,10 +41,10 @@ const AlterarController ={
             if(!consulta)
                 return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta não encontrada no banco de dados'});
             
-            if(consulta.status_pagamento === 'PAGO' && consulta.valor_liberado > 0)
+            if(consulta.status_pagamento === 'PAGO' )
                 return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta com status "PAGO" não pode ser alterada'});
             
-            if(consulta.status_pagamento === 'EM PROCESSO DE PAGTO' && consulta.valor_liberado > 0)
+            if(consulta.status_pagamento === 'EM PROCESSO DE PGTO' )
                 return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta com status "EM PROCESSO DE PAGTO" não pode ser alterada'});
 
             if(status_pagamento)consulta.status_pagamento = status_pagamento;
