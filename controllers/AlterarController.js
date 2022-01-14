@@ -9,7 +9,6 @@ const AlterarController ={
    
         const{element:{
             id_proposta,
-            proposta,
             status_pagamento,
             calculo,
             movimentacao,
@@ -39,13 +38,13 @@ const AlterarController ={
             })
 
             if(!consulta)
-                return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta não encontrada no banco de dados'});
+                return res.json({'id_proposta':id_proposta,'inclusa':false, 'message':'proposta não encontrada no banco de dados'});
             
             if(consulta.status_pagamento === 'PAGO' )
-                return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta com status "PAGO" não pode ser alterada'});
+                return res.json({'id_proposta':id_proposta,'inclusa':false, 'message':'proposta com status "PAGO" não pode ser alterada'});
             
-            if(consulta.status_pagamento === 'EM PROCESSO DE PGTO' )
-                return res.json({'proposta':proposta,'inclusa':false, 'message':'proposta com status "EM PROCESSO DE PAGTO" não pode ser alterada'});
+            if(consulta.status_pagamento === 'EM PROCESSO DE PAGTO' )
+                return res.json({'id_proposta':id_proposta,'inclusa':false, 'message':'proposta com status "EM PROCESSO DE PAGTO" não pode ser alterada'});
 
             if(status_pagamento)consulta.status_pagamento = status_pagamento;
             if(calculo)consulta.calculo = calculo;
@@ -69,7 +68,7 @@ const AlterarController ={
         } catch (error) {
 
             console.log(error);
-            res.send({'proposta':proposta,'inclusa':false,"message":"erro interno do servidor"})
+            res.send({'id_proposta':id_proposta,'inclusa':false,"message":"erro interno do servidor"})
         }
     }
 }
